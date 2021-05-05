@@ -52,28 +52,30 @@ export default function SignUp(props) {
 
   const validateEmail = (value) => {
     setEmail(value)
-    if (
-      // eslint-disable-next-line
-      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,2}))$/.test(
-        email
-      )
-    ) {
-      return dispatchNotification({
-        type: 'NOTIFY',
-        payload: 'please insert correct Email',
-        snacktype: 'error',
-        snackcolor: 'error',
-        duration: 1000,
-      })
-    } else {
-      return dispatchNotification({
-        type: 'NOTIFY',
-        payload: '',
-        snacktype: 'success',
-        snackcolor: 'success',
-        duration: 1000,
-      })
-    }
+    setTimeout(() => {
+      if (
+        // eslint-disable-next-line
+        !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,2}))$/.test(
+          email
+        )
+      ) {
+        return dispatchNotification({
+          type: 'NOTIFY',
+          payload: 'please insert correct Email',
+          snacktype: 'error',
+          snackcolor: 'error',
+          duration: 1000,
+        })
+      } else {
+        return dispatchNotification({
+          type: 'NOTIFY',
+          payload: '',
+          snacktype: 'success',
+          snackcolor: 'success',
+          duration: 1000,
+        })
+      }
+    }, 1000)
   }
 
   const sendData = (e) => {
