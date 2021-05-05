@@ -79,15 +79,7 @@ const Routing = () => {
       body: JSON.stringify({
         datenow: Date.now(),
       }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-        } else {
-        }
-      });
-    // .catch((err) => console.log(err));
-    //unverified users
+    });
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       dispatch({ type: 'USER', payload: user });
