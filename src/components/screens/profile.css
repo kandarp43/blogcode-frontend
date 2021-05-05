@@ -1,0 +1,26 @@
+.profile_main {
+	width: 100%;
+	/* margin: 0 auto; */
+}
+.profile_header {
+	display: flex;
+	justify-content: space-around;
+	margin: 19px 0;
+	width: 100%;
+	border-bottom: 2px dashed rgb(39, 37, 37);
+}
+
+
+.gallery {
+	display: flex;
+	max-width: 340px;
+	min-width: 340px;
+	margin: 10px 20px;
+	padding: 3px;
+	justify-content: center;
+}
+.profile_main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

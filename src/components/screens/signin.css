@@ -1,0 +1,9 @@
+a {
+	color: rgb(24, 21, 21);
+	text-decoration: none;
+}
+a:focus {
+	color: #fff;
+	color: inherit;
+}
+
