@@ -71,16 +71,17 @@ const Routing = () => {
   // eslint-disable-next-line
   const { state, dispatch, url } = useContext(UserContext);
   useEffect(() => {
-    var date = Date.now();
+    let currentDate = Date.now();
     fetch(url + '/unverified-users', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        datenow: date,
+        datenow: currentDate,
       }),
     });
+    currentDate = '';
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       dispatch({ type: 'USER', payload: user });
