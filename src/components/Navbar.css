@@ -1,34 +1,53 @@
 * {
-	margin: 0%;
-	padding: 0%;
+  margin: 0%;
+  padding: 0%;
 }
 .login {
-	position: sticky;
-	right: 0%;
-	top: 0%;
-	z-index: 100;
+  position: sticky;
+  right: 0%;
+  top: 0%;
+  z-index: 100;
 }
 .login-navbar {
-	display: flex;
-	justify-content: space-between;
-	background: #fff;
-	color: #131313;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  color: #131313;
 }
 
 .nav-buttons {
-	color: rgb(142, 231, 231);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  color: rgb(142, 231, 231);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
-login-btn {
-	color: #8ee7e7;
-	text-decoration: none;
+.login-btn {
+  text-decoration: none;
 }
 a:focus {
-	color: #fff;
+  color: #fff;
+}
+.navbar-login {
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1300px) {
+  .menubar {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .menubar {
+    display: contents;
+  }
+  .login-btn {
+    display: none;
+  }
 }

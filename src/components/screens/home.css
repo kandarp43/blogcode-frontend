@@ -1,87 +1,87 @@
 ::-webkit-scrollbar {
-	width: 8px;
+  width: 8px;
 }
 ::-webkit-scrollbar:horizontal {
-	height: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-thumb:horizontal {
-	width: 8px;
-	background-color: rgb(241, 110, 50);
-	border-radius: 50px;
+  width: 8px;
+  background-color: rgb(241, 110, 50);
+  border-radius: 50px;
 }
 
 ::-webkit-scrollbar-track:hover {
-	outline: 0px;
-	box-shadow: inset 0 0 8px rgba(36, 35, 35, 0.452);
-	border-radius: 50px;
+  outline: 0px;
+  box-shadow: inset 0 0 8px rgba(36, 35, 35, 0.452);
+  border-radius: 50px;
 }
 ::-webkit-scrollbar-track:horizontal {
-	height: 4px;
-	outline: 0px;
-	box-shadow: inset 0 0 8px rgba(36, 35, 35, 0.452);
-	border-radius: 50px;
+  height: 4px;
+  outline: 0px;
+  box-shadow: inset 0 0 8px rgba(36, 35, 35, 0.452);
+  border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb {
-	width: 8px;
-	background-color: #b73add;
-	box-shadow: inset 0 0 8px rgba(134, 127, 127, 0.281);
-	border-radius: 50px;
+  width: 8px;
+  background-color: #b73add;
+  box-shadow: inset 0 0 8px rgba(134, 127, 127, 0.281);
+  border-radius: 50px;
 }
 
 .home {
-	display: grid;
-	align-items: center;
-	grid-template-columns: auto auto auto;
-	background-color: #fff;
-	padding: 10px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto auto auto;
+  background-color: #fff;
+  padding: 10px;
 }
 .card {
-	/* margin: 4px !important;
+  /* margin: 4px !important;
 	margin-right: 8px !important; */
-	padding: 5px;
-	max-width: 350px;
-	min-width: 350px;
-	margin: 10px 20px;
+  padding: 5px;
+  max-width: 350px;
+  min-width: 350px;
+  margin: 10px 20px;
 }
 
 .card_img {
-	height: fit-content;
-	padding-top: 60%;
+  height: fit-content;
+  padding-top: 60%;
 }
 
 .card_comment {
-	height: auto;
-	width: 100%;
+  height: auto;
+  width: 100%;
 }
 
 #top {
-	height: 30px;
-	background-color: #fff;
+  height: 30px;
+  background-color: #fff;
 }
 #bottom {
-	height: 60px;
-	background-color: #fff;
+  height: 60px;
+  background-color: #fff;
 }
 .createpost_home {
-	box-shadow: 0px 0px 25px #ee204d;
-	border-radius: 50%;
-	position: fixed;
-	right: 20px;
-	bottom: 20px;
+  box-shadow: 0px 0px 15px #ee204d;
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
 
 @media (max-width: 1300px) {
-	.home {
-		display: grid;
-		grid-template-columns: auto auto;
-	}
+  .home {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
 }
 @media (max-width: 800px) {
-	.home {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		padding: 0px;
-	}
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+  }
 }
