@@ -1,10 +1,10 @@
-import React, { useEffect, createContext, useReducer, useContext } from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
-import Home from './components/screens/Home';
-import Profile from './components/screens/Profile';
-import SignIn from './components/screens/SignIn';
-import Signup from './components/screens/Signup';
+import React, { useEffect, createContext, useReducer, useContext } from 'react'
+import './App.css'
+import Navbar from './components/Navbar'
+import Home from './components/screens/Home'
+import Profile from './components/screens/Profile'
+import SignIn from './components/screens/SignIn'
+import Signup from './components/screens/Signup'
 
 import {
   BrowserRouter,
@@ -12,40 +12,40 @@ import {
   Switch,
   useHistory,
   useLocation,
-} from 'react-router-dom';
-import Createpost from './components/screens/Createpost';
+} from 'react-router-dom'
+import Createpost from './components/screens/Createpost'
 
-import { reducer, initialState } from './reducers/userReducer';
-import { loadReducer, initialLoadState } from './reducers/loadReducer';
+import { reducer, initialState } from './reducers/userReducer'
+import { loadReducer, initialLoadState } from './reducers/loadReducer'
 import {
   reducerNotification,
   initialStatenotification,
-} from './reducers/notificationReducer';
-import BlogPost from './components/screens/BlogPost';
-import Notification from './components/Notification';
-import UserProfile from './components/screens/UserProfile';
-import LikedPost from './components/screens/LikedPost';
-import Reset from './components/screens/Reset';
-import SetNewPassword from './components/screens/SetNewpassword';
-import VerifyProfile from './components/screens/VerifyProfile';
-import LinearIndeterminate from './components/Loader/LinearIndeterminate';
+} from './reducers/notificationReducer'
+import BlogPost from './components/screens/BlogPost'
+import Notification from './components/Notification'
+import UserProfile from './components/screens/UserProfile'
+import LikedPost from './components/screens/LikedPost'
+import Reset from './components/screens/Reset'
+import SetNewPassword from './components/screens/SetNewpassword'
+import VerifyProfile from './components/screens/VerifyProfile'
+import LinearIndeterminate from './components/Loader/LinearIndeterminate'
 
 document.addEventListener('contextmenu', () => {
   // e.preventDefault();
-});
+})
 
-export const UserContext = createContext();
-export const NotifyContext = createContext();
-document.title = 'BlogCode';
+export const UserContext = createContext()
+export const NotifyContext = createContext()
+document.title = 'BlogCode'
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const [loading, dispatchLoad] = useReducer(loadReducer, initialLoadState);
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const [loading, dispatchLoad] = useReducer(loadReducer, initialLoadState)
   const [notification, dispatchNotification] = useReducer(
     reducerNotification,
     initialStatenotification
-  );
-  const url = 'https://blogcode-api.herokuapp.com';
+  )
+  const url = 'https://blogcode-api.herokuapp.com'
 
   return (
     <UserContext.Provider value={{ state, dispatch, url }}>
@@ -62,16 +62,16 @@ export default function App() {
         </BrowserRouter>
       </NotifyContext.Provider>
     </UserContext.Provider>
-  );
+  )
 }
 
 const Routing = () => {
-  const history = useHistory();
-  const location = useLocation();
+  const history = useHistory()
+  const location = useLocation()
   // eslint-disable-next-line
-  const { state, dispatch, url } = useContext(UserContext);
+  const { state, dispatch, url } = useContext(UserContext)
   useEffect(() => {
-    let currentDate = Date.now();
+    let currentDate = Date.now()
     fetch(url + '/unverified-users', {
       method: 'post',
       headers: {
@@ -80,19 +80,19 @@ const Routing = () => {
       body: JSON.stringify({
         datenow: currentDate,
       }),
-    });
-    currentDate = '';
-    const user = JSON.parse(localStorage.getItem('user'));
+    }).then((res) => res.json())
+    currentDate = ''
+    const user = JSON.parse(localStorage.getItem('user'))
     if (user) {
-      dispatch({ type: 'USER', payload: user });
+      dispatch({ type: 'USER', payload: user })
       if (
         location.pathname.startsWith('/signin') ||
         location.pathname.startsWith('/signup') ||
         location.pathname.startsWith('/reset')
       ) {
-        history.push('/');
+        history.push('/')
       } else {
-        history.push(location.pathname);
+        history.push(location.pathname)
       }
     } else {
       if (
@@ -102,13 +102,13 @@ const Routing = () => {
         location.pathname.startsWith('/signup') ||
         location.pathname.startsWith('/verify')
       ) {
-        history.push(location.pathname);
+        history.push(location.pathname)
       } else {
-        history.push('/');
+        history.push('/')
       }
     }
     // eslint-disable-next-line
-  }, []);
+  }, [])
 
   return (
     <Switch>
@@ -146,5 +146,5 @@ const Routing = () => {
         <VerifyProfile />
       </Route>
     </Switch>
-  );
-};
+  )
+}
