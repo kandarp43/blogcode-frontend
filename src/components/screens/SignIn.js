@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../App'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
@@ -50,6 +50,9 @@ export default function SignIn() {
   const validateEmail = (value) => {
     setEmail(value)
   }
+  useEffect(() => {
+    dispatchLoad({ type: 'LOADOFF' })
+  }, [dispatchLoad])
 
   const sendData = (e) => {
     setDisable(true)
