@@ -87,6 +87,7 @@ const Routing = () => {
         }
       });
     // .catch((err) => console.log(err));
+    //unverified users
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       dispatch({ type: 'USER', payload: user });
