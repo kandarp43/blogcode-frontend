@@ -57,7 +57,12 @@ export default function App() {
       body: JSON.stringify({
         datenow: currentDate,
       }),
-    }).then((res) => res.json())
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log('%c' + result.message, 'background: #222; color: #bada55')
+      })
+      .catch((err) => console.log(err))
     currentDate = ''
   }, [])
 
