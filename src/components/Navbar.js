@@ -31,7 +31,6 @@ export default function Navbar() {
       <HideOnScroll>
         <AppBar color='inherit' position='static'>
           <Toolbar className='login-navbar'>
-            {' '}
             {/* variant="dense"   for make navbar flat */}
             <Typography className='login-logo' variant='h5'>
               <span
@@ -44,8 +43,7 @@ export default function Navbar() {
                   history.push(state ? '/' : '/')
                 }}
               >
-                {' '}
-                BlogCode{' '}
+                BlogCode
               </span>
             </Typography>
             <div className='nav-buttons'>
