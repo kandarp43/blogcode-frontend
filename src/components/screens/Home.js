@@ -6,42 +6,42 @@ import {
   CardHeader,
   CardMedia,
   Typography,
-} from "@material-ui/core";
-import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router";
-import { NotifyContext, UserContext } from "../../App";
-import CreatepostButton from "./CreatepostButton";
-import { htmlToText } from "html-to-text";
-import "./home.css";
+} from '@material-ui/core'
+import React, { useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router'
+import { NotifyContext, UserContext } from '../../App'
+import CreatepostButton from './CreatepostButton'
+import { htmlToText } from 'html-to-text'
+import './home.css'
 
 const Home = () => {
-  document.title = "BlogCode";
-  const [data, setData] = useState([]);
-  const { dispatchLoad } = useContext(NotifyContext);
-  const { state, url } = useContext(UserContext);
+  document.title = 'BlogCode'
+  const [data, setData] = useState([])
+  const { dispatchLoad } = useContext(NotifyContext)
+  const { state, url } = useContext(UserContext)
 
   useEffect(() => {
-    dispatchLoad({ type: "LOAD" });
-    fetch(url + "/allpost", {
+    dispatchLoad({ type: 'LOAD' })
+    fetch(url + '/allpost', {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
+        Authorization: 'Bearer ' + localStorage.getItem('jwt'),
       },
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.posts);
-        setData(result.posts);
-        dispatchLoad({ type: "LOADOFF" });
-      });
-  }, [url, dispatchLoad]);
+        console.log(result.posts)
+        setData(result.posts)
+        dispatchLoad({ type: 'LOADOFF' })
+      })
+  }, [url, dispatchLoad])
   return (
     <>
-      <div id="top"></div>
-      <div className="home">
+      <div id='top'></div>
+      <div className='home'>
         {data.map((item, index) => {
           return (
             <CardPost
-              className="card_shadow"
+              className='card_shadow'
               key={index}
               index={index}
               time={item.createdAt}
@@ -52,64 +52,68 @@ const Home = () => {
               title={item.title}
               body={item.body}
             />
-          );
+          )
         })}
       </div>
-      <div id="bottom"></div>
-      {state ? <CreatepostButton /> : ""}
+      <div id='bottom'></div>
+      {state ? <CreatepostButton /> : ''}
     </>
-  );
-};
+  )
+}
 
 const CardPost = (props) => {
-  const history = useHistory();
-  const { state } = useContext(UserContext);
+  const history = useHistory()
+  const { state } = useContext(UserContext)
   // eslint-disable-next-line
-  const { notification, dispatchNotification } = useContext(NotifyContext);
+  const { notification, dispatchNotification } = useContext(NotifyContext)
   const redirection = (Id) => {
-    history.push("/posts/" + Id);
-  };
+    history.push('/posts/' + Id)
+  }
   const redirectionProfile = (userId) => {
     if (state) {
       if (state._id === userId) {
-        history.push("/profile");
+        history.push('/profile')
       } else {
-        history.push("/profile/" + userId);
+        history.push('/profile/' + userId)
       }
     } else {
       return dispatchNotification({
-        type: "NOTIFY",
-        payload: "you must be signed in to view others profile",
-        snacktype: "error",
-        snackcolor: "error",
+        type: 'NOTIFY',
+        payload: 'you must be signed in to view others profile',
+        snacktype: 'error',
+        snackcolor: 'error',
         duration: 3000,
-      });
+      })
       // history.push('/')
     }
-  };
+  }
 
-  const html = props.body;
+  const html = props.body
   const text = htmlToText(html, {
     wordwrap: 130,
-  });
-  const finaltext = text.slice(0, 70) + "...";
+  })
+  const finaltext = text.slice(0, 70) + '...'
 
   return (
     <>
-      <Card className="card" elevation={6}>
+      <Card
+        className='card'
+        style={{ backgroundColor: '#ffe' }}
+        elevation={1}
+      >
         <CardHeader
           avatar={
             <Avatar
-              style={{ cursor: "pointer", backgroundColor: "#f56786" }}
+              style={{ cursor: 'pointer', backgroundColor: '#f56786' }}
               onClick={() => redirectionProfile(props.userId)}
-              className="card_avatar"
+              className='card_avatar'
             >
               {props.name.slice(0, 1)}
             </Avatar>
           }
           title={
             <span
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               onClick={() => redirectionProfile(props.userId)}
             >
               {props.name}
@@ -120,21 +124,21 @@ const CardPost = (props) => {
 
         <CardActionArea onClick={() => redirection(props.postId)}>
           {props.photo && (
-            <CardMedia className="card_img" image={props.photo} alt="" />
+            <CardMedia className='card_img' image={props.photo} alt='' />
           )}
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant='h5' component='h2'>
               {props.title}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               {finaltext}
             </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
     </>
-  );
-};
+  )
+}
 
 // const useStyles = makeStyles({
 //     card: {
@@ -184,4 +188,4 @@ const CardPost = (props) => {
 //     )
 // }
 
-export default Home;
+export default Home
