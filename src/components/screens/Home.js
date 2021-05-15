@@ -98,7 +98,7 @@ const CardPost = (props) => {
     <>
       <Card
         className='card'
-        style={{ backgroundColor: '#ffe' }}
+        style={{ backgroundColor: '#f5f5f5' }}
         elevation={1}
       >
         <CardHeader
