@@ -122,7 +122,10 @@ const CardPost = (props) => {
           subheader={props.time}
         />
 
-        <CardActionArea onClick={() => redirection(props.postId)}>
+        <CardActionArea
+          style={{ borderRadius: '3px' }}
+          onClick={() => redirection(props.postId)}
+        >
           {props.photo && (
             <CardMedia className='card_img' image={props.photo} alt='' />
           )}

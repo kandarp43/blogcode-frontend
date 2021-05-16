@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <div className='login'>
       <HideOnScroll>
-        <AppBar color='inherit' position='static'>
+        <AppBar color='inherit' position='static' elevation={1}>
           <Toolbar className='login-navbar'>
             {/* variant="dense"   for make navbar flat */}
             <Typography className='login-logo' variant='h5'>
