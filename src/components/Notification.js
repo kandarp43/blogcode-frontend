@@ -12,16 +12,18 @@ function Notification() {
     }
     await dispatchNotification({
       type: 'CLOSE',
+      payload: notification.snackbarmsg,
+      snacktype: notification.snackbartype,
+      snackcolor: notification.snackbarcolor,
     })
   }
   return (
     <div>
-      {notification.snackbaropen ? (
         <Snackbar
           elevation={6}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           onClose={handleClose}
-          open={true}
+          open={notification.snackbaropen}
           autoHideDuration={notification.snackbarduration}
         >
           <MuiAlert
@@ -35,13 +37,7 @@ function Notification() {
             {notification.snackbarmsg}
           </MuiAlert>
         </Snackbar>
-      ) : (
-        <Snackbar
-          elevation={6}
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          open={false}
-        ></Snackbar>
-      )}
+     
     </div>
   )
 }

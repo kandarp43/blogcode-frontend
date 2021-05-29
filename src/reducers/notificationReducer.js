@@ -15,6 +15,10 @@ export const reducerNotification = (notification, action) => {
   if (action.type === 'CLOSE') {
     return {
       snackbaropen: false,
+      snackbartype: action.snacktype,
+      snackbarcolor: action.snackcolor,
+      snackbarduration: action.duration,
+      snackbarmsg: action.payload,
     }
   }
 
